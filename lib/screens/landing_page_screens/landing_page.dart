@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:pay_me_app/constants/appColor.dart';
 import 'package:pay_me_app/routes/page_routes.dart';
@@ -27,6 +29,8 @@ class _LandingPageState extends State<LandingPage> {
 
     pageController =
         PageController(initialPage: currentPage, viewportFraction: 0.99.w);
+
+    Timer(const Duration(seconds: 2), () {});
   }
 
   @override
@@ -37,6 +41,9 @@ class _LandingPageState extends State<LandingPage> {
 
   @override
   Widget build(BuildContext context) {
+    // Timer(const Duration(seconds: 2), () {
+    //   print('kola');
+    // });
     return SafeArea(
       child: Scaffold(
         body: SizedBox(
