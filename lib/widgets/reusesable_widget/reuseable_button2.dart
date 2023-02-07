@@ -21,7 +21,7 @@ class ReuseableButton2 extends StatelessWidget {
       required this.onPressed,
       this.height = 50,
       this.textSize = 16,
-      this.width = 327,
+      this.width = 366,
       this.isActive = true,
       this.backGroundColor = Colors.white,
       this.textColor = AppColor.mainColor,
@@ -31,23 +31,25 @@ class ReuseableButton2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16.r),
-        border: Border.all(width: 1, color:AppColor.mainColor),
+    return InkWell(
+      onTap: onPressed,
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(16.r),
+          border: Border.all(width: 1, color:AppColor.mainColor),
+        ),
+        height: height,
+        width: width,
+        child: Center(
+          child: NormalText(
+                size: textSize,
+                color: textColor,
+                fontWeight: FontWeight.normal,
+                text: text,
+              ),
+        ),
+    
       ),
-      margin: EdgeInsets.fromLTRB(20.0.w, 0.0.h, 20.0.w, 0.0.h),
-      height: height,
-      width: width,
-      child: Center(
-        child: NormalText(
-              size: textSize,
-              color: textColor,
-              fontWeight: FontWeight.normal,
-              text: text,
-            ),
-      ),
-
     );
   }
 }

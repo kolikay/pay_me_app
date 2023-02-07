@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:pay_me_app/constants/appColor.dart';
 import 'package:pay_me_app/routes/page_routes.dart';
+import 'package:pay_me_app/screens/authentication/views/loginScreen.dart';
+import 'package:pay_me_app/screens/authentication/views/signUpScreen.dart';
 import 'package:pay_me_app/widgets/reusesable_widget/normal_text.dart';
 import 'package:pay_me_app/widgets/reusesable_widget/reuseable_button2.dart';
 
@@ -137,16 +139,34 @@ class _LandingPageState extends State<LandingPage> {
         SizedBox(
           height: 40.h,
         ),
-        ReuseableButton(
-          text: 'Sign Up',
-          onPressed: () {},
+        SizedBox(
+          width: 314,
+          child: ReuseableButton(
+            text: 'Sign Up',
+            onPressed: () {
+               Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const SignUpScrren(),
+                ),
+              );
+            },
+          ),
         ),
         SizedBox(
           height: 32.h,
         ),
-        ReuseableButton2(
-          text: 'Login',
-          onPressed: () {},
+        SizedBox(
+          width: 314,
+          child: ReuseableButton2(
+            text: 'Login',
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const LoginScreen(),
+                ),
+              );
+            },
+          ),
         ),
       ],
     );
