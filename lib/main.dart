@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pay_me_app/constants/appColor.dart';
 import 'package:pay_me_app/screens/authentication/views/loginScreen.dart';
 import 'package:pay_me_app/screens/authentication/views/signUpScreen.dart';
 import 'package:pay_me_app/screens/authentication/views/verifyScreen.dart';
@@ -15,19 +16,20 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(375, 812),
+      designSize: Size(375, 812),
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        return const MaterialApp(
+        return MaterialApp(
             debugShowCheckedModeBanner: false,
 
-            // theme: ThemeData(
-            //   primarySwatch: Colors.black,
-            // ),
+            theme:  ThemeData(
+              primarySwatch: Palette.kToDark,
+            ),
             // home: LoginScreen(),
-            home: LandingPage());
+            home:const LandingPage());
       },
     );
   }
 }
+ const MaterialColor myColor = const MaterialColor(0xff6F2AF4, const <int, Color>{50: const Color(0xff6F2AF4)});

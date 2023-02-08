@@ -74,6 +74,8 @@ class _VerifyScreenState extends State<VerifyScreen> {
                 },
                 pinTheme: PinTheme(
                   fieldWidth: 65,
+                  activeFillColor: Colors.white,
+                  activeColor: Colors.grey,
                   selectedColor: Colors.white,
                   inactiveColor: Colors.grey,
                   selectedFillColor: Colors.white,
@@ -101,11 +103,11 @@ class _VerifyScreenState extends State<VerifyScreen> {
             ),
             ReuseableButton(
               onPressed: () {
-                    Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: ((context) => const HomePage()),
-                    ),
-                  );
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: ((context) => const HomePage()),
+                  ),
+                );
               },
               text: 'Sign UP',
               width: 400,

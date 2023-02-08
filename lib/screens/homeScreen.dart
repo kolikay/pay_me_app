@@ -16,6 +16,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: NormalText(text: 'WELCOME TO PAY ME', size: 30, color: AppColor.mainColor,));
+    return Scaffold(body: Center(child: NormalText(text: 'WELCOME TO PAY ME', size: 30, color: AppColor.mainColor,)));
   }
 }

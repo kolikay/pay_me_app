@@ -58,19 +58,19 @@ class _LandingPageState extends State<LandingPage> {
             },
             children: [
               buildPage(
-                urlImage: 'landingImage1.JPG',
+                urlImage: 'assets/landingImage1.JPG',
                 title: 'Fast Payment',
                 subTitle1:
                     'Get your payment done with ease save the charges for something else',
               ),
               buildPage(
-                urlImage: 'landingImage2.JPG',
+                urlImage: 'assets/landingImage2.JPG',
                 title: 'Secure Payment',
                 subTitle1:
                     'Get your payment done with ease save the charges for something else',
               ),
               buildPage(
-                urlImage: 'landingImage3.JPG',
+                urlImage: 'assets/landingImage3.JPG',
                 title: 'Scan Payment',
                 subTitle1:
                     'Get your payment done with ease save the charges for something else',
