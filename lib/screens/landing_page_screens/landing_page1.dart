@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -30,7 +32,6 @@ class _LandingPage1State extends State<LandingPage1> {
   @override
   void initState() {
     super.initState();
-
     pageController =
         PageController(initialPage: currentPage, viewportFraction: 0.9.w);
   }
@@ -41,8 +42,20 @@ class _LandingPage1State extends State<LandingPage1> {
     pageController.dispose();
   }
 
+  void nextPage() {
+    isLastPage
+        ? pageController.animateToPage(0,
+            duration: const Duration(milliseconds: 500), curve: Curves.easeOut)
+        : pageController.nextPage(
+            duration: const Duration(milliseconds: 500), curve: Curves.easeOut);
+  }
+
   @override
   Widget build(BuildContext context) {
+    Timer(const Duration(seconds: 3), () {
+      nextPage();
+    });
+
     return SafeArea(
       child: Scaffold(
         body: PageView(
