@@ -5,6 +5,7 @@ import 'package:pay_me_app/screens/authentication/views/signUpScreen.dart';
 import 'package:pay_me_app/screens/authentication/views/verifyScreen.dart';
 import 'package:pay_me_app/screens/landing_page_screens/landing_page.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pay_me_app/screens/landing_page_screens/landing_page1.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
               primarySwatch: Palette.kToDark,
             ),
             // home: LoginScreen(),
-            home:const LandingPage());
+            home:const LandingPage1());
       },
     );
   }
