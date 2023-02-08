@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:pay_me_app/constants/appColor.dart';
 import 'package:pay_me_app/screens/authentication/views/signUpScreen.dart';
+import 'package:pay_me_app/screens/authentication/views/verifyScreen.dart';
 import 'package:pay_me_app/screens/homeScreen.dart';
 import 'package:pay_me_app/widgets/reusesable_widget/normal_text.dart';
 import 'package:pay_me_app/widgets/reusesable_widget/reuseable_button.dart';
+
+import 'change_password_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -83,9 +86,16 @@ class _LoginScreenState extends State<LoginScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  NormalText(
-                    text: 'Forgot Password?',
-                    color: AppColor.mainColor,
+                  InkWell(
+                    onTap: (){
+                      Navigator.of(context).push(MaterialPageRoute(builder: ((context) =>
+                       const NewPasswordScreen()
+                      )));
+                    },
+                    child: NormalText(
+                      text: 'Forgot Password?',
+                      color: AppColor.mainColor,
+                    ),
                   )
                 ],
               ),
@@ -109,7 +119,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               const Divider(
                 color: Colors.black,
-                thickness: 0.7,
+                thickness: 1,
               ),
               const SizedBox(
                 height: 30,
