@@ -25,7 +25,7 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
     return SafeArea(
         child: Scaffold(
       body: Padding(
-        padding: const EdgeInsets.only(left:30.0),
+        padding: const EdgeInsets.only(left:30.0, right: 30),
         child: Column(
           children: [
             const SizedBox(

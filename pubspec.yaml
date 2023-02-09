@@ -51,7 +51,7 @@ dev_dependencies:
   #Slider for landing page
   carousel_slider: ^4.1.1
   smooth_page_indicator: ^1.0.0+2
-  flutter_native_splash: 1.2.0
+  flutter_native_splash: ^1.2.0
   #extra fonts
   google_fonts: 2.2.0
   #pin codes fields
@@ -81,7 +81,7 @@ dev_dependencies:
   # flutter pub run flutter_native_splash:create
 flutter_native_splash:
   image: assets/logo.png
-  color: '#ffffff'
+  color: '#6f2af4'
 
 #flutter pub run flutter_launcher_icons:main
 flutter_icons:

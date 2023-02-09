@@ -43,16 +43,13 @@ class _LandingPage1State extends State<LandingPage1> {
   }
 
   void nextPage() {
-    isLastPage
-        ? pageController.animateToPage(0,
-            duration: const Duration(milliseconds: 500), curve: Curves.easeOut)
-        : pageController.nextPage(
-            duration: const Duration(milliseconds: 500), curve: Curves.easeOut);
+    pageController.nextPage(
+        duration: const Duration(milliseconds: 300), curve: Curves.easeOut);
   }
 
   @override
   Widget build(BuildContext context) {
-    Timer(const Duration(seconds: 3), () {
+    Timer(const Duration(seconds: 6), () {
       nextPage();
     });
 
