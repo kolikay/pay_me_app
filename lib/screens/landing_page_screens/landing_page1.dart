@@ -64,19 +64,19 @@ class _LandingPage1State extends State<LandingPage1> {
           },
           children: [
             buildPage(
-              urlImage: 'assets/landingImage1.JPG',
+              urlImage: 'assets/firstImage.png',
               title: 'Fast Payment',
               subTitle1:
                   'Get your payment done with ease save the charges for something else',
             ),
             buildPage(
-              urlImage: 'assets/landingImage2.JPG',
+              urlImage: 'assets/secondImage.png',
               title: 'Secure Payment',
               subTitle1:
                   'Get your payment done with ease save the charges for something else',
             ),
             buildPage(
-              urlImage: 'assets/landingImage3.JPG',
+              urlImage: 'assets/thirdImage.png',
               title: 'Scan Payment',
               subTitle1:
                   'Get your payment done with ease save the charges for something else',
@@ -86,13 +86,25 @@ class _LandingPage1State extends State<LandingPage1> {
         bottomSheet: Padding(
           padding: const EdgeInsets.only(left: 30.0),
           child: SizedBox(
-            height: 250.h,
+            height: 200.h,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                
+                SmoothPageIndicator(
+                  controller: pageController,
+                  count: 3,
+                  effect: ExpandingDotsEffect(
+                      dotWidth: 10.w,
+                      dotHeight: 7.h,
+                      activeDotColor: AppColor.mainColor,
+                      dotColor: Colors.black12),
+                  onDotClicked: (index) => pageController.animateToPage(index,
+                      duration: const Duration(milliseconds: 500),
+                      curve: Curves.easeOut),
+                ),
                 SizedBox(
-                  height: 20.h,
+                  height: 60.h,
                 ),
                 ReuseableButton(
                   width: 323.w,
@@ -169,24 +181,6 @@ class _LandingPage1State extends State<LandingPage1> {
             ),
             textAlign: TextAlign.center,
           ),
-        ),
-        SizedBox(
-          height: 32.h,
-        ),
-        SmoothPageIndicator(
-          controller: pageController,
-          count: 3,
-          effect: ExpandingDotsEffect(
-              dotWidth: 10.w,
-              dotHeight: 5.h,
-              activeDotColor: AppColor.mainColor,
-              dotColor: Colors.black12),
-          onDotClicked: (index) => pageController.animateToPage(index,
-              duration: const Duration(milliseconds: 500),
-              curve: Curves.easeOut),
-        ),
-        SizedBox(
-          height: 40.h,
         ),
       ],
     );
