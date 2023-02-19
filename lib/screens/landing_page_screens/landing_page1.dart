@@ -1,6 +1,9 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../widgets/reusesable_widget/reuseable_button.dart';
@@ -28,12 +31,12 @@ class _LandingPage1State extends State<LandingPage1> {
   late PageController pageController;
   int currentPage = 0;
   bool isLastPage = false;
+  int lastPageNum = 0;
 
   @override
   void initState() {
     super.initState();
-    pageController =
-        PageController(initialPage: currentPage, viewportFraction: 0.9.w);
+    pageController = PageController(initialPage: currentPage);
   }
 
   @override
@@ -47,10 +50,23 @@ class _LandingPage1State extends State<LandingPage1> {
         duration: const Duration(milliseconds: 300), curve: Curves.easeOut);
   }
 
+  void firstPage() {
+    pageController.animateToPage(0,
+        duration: const Duration(milliseconds: 600), curve: Curves.easeOut);
+  }
+
   @override
   Widget build(BuildContext context) {
     Timer(const Duration(seconds: 6), () {
-      nextPage();
+      // setState(() {
+      //   lastPageNum = lastPageNum + 1;
+      // });
+      // print(lastPageNum);
+      if (lastPageNum % 3 != 0) {
+        nextPage();
+      } else {
+        firstPage();
+      }
     });
 
     return SafeArea(
@@ -84,13 +100,11 @@ class _LandingPage1State extends State<LandingPage1> {
           ],
         ),
         bottomSheet: Padding(
-          padding: const EdgeInsets.only(left: 30.0),
+          padding: const EdgeInsets.symmetric(horizontal: 36),
           child: SizedBox(
-            height: 200.h,
+            height: 310.h,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                
                 SmoothPageIndicator(
                   controller: pageController,
                   count: 3,
@@ -122,7 +136,7 @@ class _LandingPage1State extends State<LandingPage1> {
                   },
                 ),
                 SizedBox(
-                  height: 20.h,
+                  height: 40.h,
                 ),
                 ReuseableButton2(
                   width: 323.w,
@@ -151,16 +165,16 @@ class _LandingPage1State extends State<LandingPage1> {
     return Column(
       children: [
         Container(
-          height: 425.h,
+          height: 440.h,
           width: double.infinity,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(5.r),
             image:
-                DecorationImage(image: AssetImage(urlImage), fit: BoxFit.cover),
+                DecorationImage(image: AssetImage(urlImage), fit: BoxFit.fill),
           ),
         ),
         SizedBox(
-          height: 25.h,
+          height: 15.h,
         ),
         NormalText(
           text: title,
@@ -172,12 +186,13 @@ class _LandingPage1State extends State<LandingPage1> {
           height: 16.h,
         ),
         SizedBox(
-          width: 300.w,
+          width: 400.w,
+          height: 52.h,
           child: Text(
             subTitle1,
             style: TextStyle(
               fontFamily: 'Objectivity',
-              fontSize: 16.sp,
+              fontSize: 18.sp,
             ),
             textAlign: TextAlign.center,
           ),

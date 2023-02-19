@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: Size(375, 812),
+      designSize:const Size(430, 932),
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
@@ -33,4 +33,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
- const MaterialColor myColor = const MaterialColor(0xff6F2AF4, const <int, Color>{50: const Color(0xff6F2AF4)});
+ const MaterialColor myColor =  MaterialColor(0xff6F2AF4, <int, Color>{50: Color(0xff6F2AF4)});
