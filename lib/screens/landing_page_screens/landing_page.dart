@@ -38,7 +38,7 @@ class _LandingPageState extends State<LandingPage> {
               enableInfiniteScroll: false,
               reverse: false,
               autoPlay: true,
-              autoPlayInterval: const Duration(seconds: 3),
+              autoPlayInterval: const Duration(seconds: 6),
               autoPlayAnimationDuration: const Duration(milliseconds: 600),
               onPageChanged: (index, reason) {
                 setState(() {
@@ -72,7 +72,7 @@ class _LandingPageState extends State<LandingPage> {
         bottomSheet: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 36),
           child: SizedBox(
-            height: 310.h,
+            height: 340.h,
             child: Column(
               children: [
                 AnimatedSmoothIndicator(
@@ -89,7 +89,7 @@ class _LandingPageState extends State<LandingPage> {
                       curve: Curves.easeOut),
                 ),
                 SizedBox(
-                  height: 60.h,
+                  height: 100.h,
                 ),
                 ReuseableButton(
                   width: 323.w,
@@ -136,7 +136,7 @@ class _LandingPageState extends State<LandingPage> {
     return Column(
       children: [
         Container(
-          height: 350.h,
+          height: 400.h,
           width: double.infinity,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(5.r),
