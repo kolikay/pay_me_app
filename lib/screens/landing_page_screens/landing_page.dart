@@ -1,10 +1,8 @@
-import 'dart:async';
+
 
 import 'package:flutter/material.dart';
 import 'package:pay_me_app/constants/appColor.dart';
-import 'package:pay_me_app/routes/page_routes.dart';
 import 'package:pay_me_app/screens/authentication/views/loginScreen.dart';
-import 'package:pay_me_app/screens/authentication/views/signUpScreen.dart';
 import 'package:pay_me_app/widgets/reusesable_widget/normal_text.dart';
 import 'package:pay_me_app/widgets/reusesable_widget/reuseable_button2.dart';
 
@@ -12,6 +10,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../widgets/reusesable_widget/reuseable_button.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({Key? key}) : super(key: key);
@@ -21,42 +20,34 @@ class LandingPage extends StatefulWidget {
 }
 
 class _LandingPageState extends State<LandingPage> {
-  late PageController pageController;
+  CarouselController carouselController = CarouselController();
   int currentPage = 0;
   bool isLastPage = false;
 
   @override
-  void initState() {
-    super.initState();
-
-    pageController =
-        PageController(initialPage: currentPage, viewportFraction: 0.99.w);
-
-    Timer(const Duration(seconds: 2), () {});
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    pageController.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    // Timer(const Duration(seconds: 2), () {
-    //   print('kola');
-    // });
     return SafeArea(
       child: Scaffold(
         body: SizedBox(
-          child: PageView(
-            controller: pageController,
-            onPageChanged: (index) {
-              setState(() {
-                isLastPage = index == 2;
-              });
-            },
-            children: [
+          child: CarouselSlider(
+            carouselController: carouselController,
+            options: CarouselOptions(
+              viewportFraction: 0.99,
+              height: 913.h,
+              initialPage: 0,
+              enableInfiniteScroll: false,
+              reverse: false,
+              autoPlay: true,
+              autoPlayInterval: const Duration(seconds: 3),
+              autoPlayAnimationDuration: const Duration(milliseconds: 600),
+              onPageChanged: (index, reason) {
+                setState(() {
+                  isLastPage = index == 2;
+                  currentPage = index;
+                });
+              },
+            ),
+            items: [
               buildPage(
                 urlImage: 'assets/landingImage1.JPG',
                 title: 'Fast Payment',
@@ -78,6 +69,61 @@ class _LandingPageState extends State<LandingPage> {
             ],
           ),
         ),
+        bottomSheet: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 36),
+          child: SizedBox(
+            height: 310.h,
+            child: Column(
+              children: [
+                AnimatedSmoothIndicator(
+                  activeIndex: currentPage,
+                  count: 3,
+                  effect: ExpandingDotsEffect(
+                      dotWidth: 10.w,
+                      dotHeight: 7.h,
+                      activeDotColor: AppColor.mainColor,
+                      dotColor: Colors.black12),
+                  onDotClicked: (index) => carouselController.animateToPage(
+                      index,
+                      duration: const Duration(milliseconds: 500),
+                      curve: Curves.easeOut),
+                ),
+                SizedBox(
+                  height: 60.h,
+                ),
+                ReuseableButton(
+                  width: 323.w,
+                  text: isLastPage ? 'Login' : 'Continue',
+                  onPressed: () {
+                    !isLastPage
+                        ? carouselController.nextPage(
+                            duration: const Duration(milliseconds: 500),
+                            curve: Curves.easeOut)
+                        : Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: ((context) => const LoginScreen()),
+                            ),
+                          );
+                  },
+                ),
+                SizedBox(
+                  height: 40.h,
+                ),
+                ReuseableButton2(
+                  width: 323.w,
+                  text: isLastPage ? 'Register' : 'Skip',
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const LoginScreen(),
+                      ),
+                    );
+                  },
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
@@ -90,16 +136,16 @@ class _LandingPageState extends State<LandingPage> {
     return Column(
       children: [
         Container(
-          height: 425.h,
+          height: 350.h,
           width: double.infinity,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(5.r),
             image:
-                DecorationImage(image: AssetImage(urlImage), fit: BoxFit.cover),
+                DecorationImage(image: AssetImage(urlImage), fit: BoxFit.fill),
           ),
         ),
         SizedBox(
-          height: 25.h,
+          height: 15.h,
         ),
         NormalText(
           text: title,
@@ -111,61 +157,15 @@ class _LandingPageState extends State<LandingPage> {
           height: 16.h,
         ),
         SizedBox(
-          width: 300.w,
+          width: 400.w,
+          height: 52.h,
           child: Text(
             subTitle1,
             style: TextStyle(
               fontFamily: 'Objectivity',
-              fontSize: 16.sp,
+              fontSize: 18.sp,
             ),
             textAlign: TextAlign.center,
-          ),
-        ),
-        SizedBox(
-          height: 32.h,
-        ),
-        SmoothPageIndicator(
-          controller: pageController,
-          count: 3,
-          effect: ExpandingDotsEffect(
-              dotWidth: 10.w,
-              dotHeight: 5.h,
-              activeDotColor: AppColor.mainColor,
-              dotColor: Colors.black12),
-          onDotClicked: (index) => pageController.animateToPage(index,
-              duration: const Duration(milliseconds: 500),
-              curve: Curves.easeOut),
-        ),
-        SizedBox(
-          height: 40.h,
-        ),
-        SizedBox(
-          width: 314,
-          child: ReuseableButton(
-            text: 'Sign Up',
-            onPressed: () {
-               Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => const SignUpScrren(),
-                ),
-              );
-            },
-          ),
-        ),
-        SizedBox(
-          height: 32.h,
-        ),
-        SizedBox(
-          width: 314,
-          child: ReuseableButton2(
-            text: 'Login',
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => const LoginScreen(),
-                ),
-              );
-            },
           ),
         ),
       ],

@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
               primarySwatch: Palette.kToDark,
             ),
             // home: LoginScreen(),
-            home:const LandingPage1());
+            home:const LandingPage());
       },
     );
   }
