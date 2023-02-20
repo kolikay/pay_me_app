@@ -72,7 +72,7 @@ class _LandingPageState extends State<LandingPage> {
         bottomSheet: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 36),
           child: SizedBox(
-            height: 340.h,
+            height: 280.h,
             child: Column(
               children: [
                 AnimatedSmoothIndicator(
@@ -136,7 +136,7 @@ class _LandingPageState extends State<LandingPage> {
     return Column(
       children: [
         Container(
-          height: 400.h,
+          height: 450.h,
           width: double.infinity,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(5.r),
